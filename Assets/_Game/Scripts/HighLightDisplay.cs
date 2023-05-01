@@ -2,12 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using TMPro;
 
 public class HighLightDisplay : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI _highlightNameTextView;
+    //[SerializeField] private TextMeshProUGUI _highlightDescriptionTextView;
+
     private Transform highlight;
     private Transform selection;
     private RaycastHit raycastHit;
+    private HighLight _highlight;
+    public string Name;
+    //public string Description;
+
 
     void Update()
     {
@@ -43,7 +52,7 @@ public class HighLightDisplay : MonoBehaviour
         }
 
 
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(2))
         {
             if (highlight)
             {
@@ -54,6 +63,9 @@ public class HighLightDisplay : MonoBehaviour
                 selection = raycastHit.transform;
                 selection.gameObject.GetComponent<Outline>().enabled = true;
                 highlight = null;
+                _highlightNameTextView.text = selection.gameObject.ToString();
+                //_highlightDescriptionTextView.text = selection.gameObject._highlight.GetComponent<Description>;
+
             }
             else
             {
@@ -61,6 +73,7 @@ public class HighLightDisplay : MonoBehaviour
                 {
                     selection.gameObject.GetComponent<Outline>().enabled = false;
                     selection = null;
+                    _highlightNameTextView.text = " ";
                 }
             }
         }

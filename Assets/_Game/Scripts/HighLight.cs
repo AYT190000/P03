@@ -16,5 +16,8 @@ public class HighLight : MonoBehaviour
     [TextArea()]
     private string _description;
 
+    public string Name =>_name;
+    public HighLightType HighlightType => _highlightType;
+    public string Description => _description;
 
 }
