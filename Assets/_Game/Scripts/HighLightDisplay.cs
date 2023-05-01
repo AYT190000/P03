@@ -14,8 +14,7 @@ public class HighLightDisplay : MonoBehaviour
     private Transform selection;
     private RaycastHit raycastHit;
     private HighLight _highlight;
-    public string Name;
-    //public string Description;
+    
 
 
     void Update()
